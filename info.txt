@@ -1,0 +1,1 @@
+[{"title":"salame","description":"picado grueso","price":100,"thumbnail":"","code":"s1","stock":30,"id":1},{"title":"queso","description":"pategras","price":200,"thumbnail":"","code":"q1","stock":20,"id":1},{"title":"queso","description":"pategras","price":200,"thumbnail":"","code":"q1","stock":20,"id":1}]
