@@ -77,7 +77,7 @@ export class ProductManager {
     
 
 
-class Product {
+/*class Product {
     constructor(title = "", description = "", price = 0, thumbnail = "", code = "", stock = 0){
         
         this.title = title
@@ -129,6 +129,3 @@ console.log(productManager.getProducts())
 
 console.log(productManager)*/
 
-const prod = new ProductManager('./info.txt')
-prod.addProduct(product2)
-prod.getProducts().then(prod => console.log(prod))
