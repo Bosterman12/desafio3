@@ -23,19 +23,19 @@ productRouter.get('/:id', async (req, res) => {
 })
 
 productRouter.post('/', async (req,res) => {
-    const {title, description, price, thumbnail, code, stock} = req.body
-     await productManager.addProduct({title, description, price, thumbnail, code, stock})
+    const {title, description, price, thumbnail, status, code, stock} = req.body
+     await productManager.addProduct({title, description, price, thumbnail, status, code, stock})
     res.send("Producto creado")
 })
 
-productRouter.put('/:id', async (req,res) => {
+productRouter.put('/', async (req,res) => {
     const id = req.params.id
-    const {title, description, price, thumbnail, code, stock} = req.body
-    const mensaje = await productManager.updateProduct(id,{title, description, price, thumbnail, code, stock})
+    const {title, description, price, thumbnail, status, code, stock} = req.body
+    const mensaje = await productManager.updateProduct(id,{title, description, price, thumbnail, status, code, stock})
     res.send(mensaje)
 })
 
-productRouter.delete('/:id', async (req,res) => {
+productRouter.delete('/', async (req,res) => {
     const id = req.params.id
     const mensaje = await productManager.deleteProduct(id)
     res.send(mensaje)

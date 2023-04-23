@@ -7,7 +7,7 @@ export class ProductManager {
         
         
         }  
-        static incrementID(){
+        static incrementarID(){
             if(this.idIncrement){
                 this.idIncrement++
             }else{
@@ -20,7 +20,7 @@ export class ProductManager {
     async addProduct(producto){
         const prodsJson = await fs.readFile(this.path, 'utf-8')
         const prods = JSON.parse(prodsJson)
-        producto.id = ProductManager.incrementID()
+        producto.id = ProductManager.incrementarID()
         prods.push(producto)
         await fs.writeFile(this.path, JSON.stringify(prods))
         return "Producto creado"
@@ -42,7 +42,7 @@ export class ProductManager {
         }
     } 
 
-    async updateProduct (id,{title, description, price, thumbnail, code, stock}){
+    async updateProduct (id,{title, description, price, thumbnail, status, code, stock}){
         const prodsJson = await fs.readFile(this.path, 'utf-8')
         const prods = JSON.parse(prodsJson)
         if(prods.some(prod => prod.id === parseInt(id))){
@@ -51,6 +51,7 @@ export class ProductManager {
             prods[index].description = description
             prods[index].price = price
             prods[index].thumbnail = thumbnail
+            prods[index].status = status
             prods[index].code = code
             prods[index].stock = stock
 
