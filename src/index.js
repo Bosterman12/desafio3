@@ -23,7 +23,7 @@ const upload = (multer({storage:storage}))
 
 console.log(__dirname)
 
-app.use('/product', productRouter)
+app.use('/api/product', productRouter)
 app.use( '/static' ,express.static(__dirname + '/public'))
 app.post('/upload', upload.single('product'), (req, res) => {
     console.log(req.body)
