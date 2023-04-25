@@ -42,14 +42,26 @@ export class CartManager {
         }
     } 
 
-    async addProductCart(id, quantity, idCart){
+    async addProductCart(cid,pid,{quantity}){
         const cartsJson = await fs.readFile(this.path, 'utf-8')
         const carts = JSON.parse(cartsJson)
-        if( carrito= carts.find(cart => cart.id === parseInt(idCart))){
+        const cartbyid = carts.find(cart => cart.id === parseInt(cid))
+        
+        const  cantidad = cartbyid.cantidad
+        const productIndex = cantidad.findindex((prod) => prod.product=== parseInt(pid))//aca tira palo
+        if( productIndex === -1 ){
+            const prod = {
+                product: parseInt(pid),
+                quantity: 1,
+              }
+              cartbyid.cantidad.push(prod)
+               
             //modificar la cantidad
         }else{
+            cantidad[productIndex].quantity += quantity
             //crear nuevo objeto con id y quantity y guardarlo en el carrito
         }
+        await fs.writeFile(this.path, JSON.stringify(carts))
         // consultar el indice del carrito con findindex y modificarlo para guardarlo  en el txt
     }
 
